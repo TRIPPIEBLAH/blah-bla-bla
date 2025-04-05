@@ -1,0 +1,43 @@
+-- Gui to Lua
+-- Version: 3.2
+
+-- Instances:
+
+local ScreenGui = Instance.new("ScreenGui")
+local Frame = Instance.new("Frame")
+local TextLabel = Instance.new("TextLabel")
+local ImageLabel = Instance.new("ImageLabel")
+
+--Properties:
+
+ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+
+Frame.Parent = ScreenGui
+Frame.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Frame.BorderColor3 = Color3.fromRGB(0, 0, 0)
+Frame.Position = UDim2.new(0.0578280799, 0, 0.864215016, 0)
+Frame.Size = UDim2.new(0, 268, 0, 78)
+
+TextLabel.Parent = Frame
+TextLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+TextLabel.BorderColor3 = Color3.fromRGB(0, 0, 0)
+TextLabel.BorderSizePixel = 0
+TextLabel.Position = UDim2.new(0.0410447754, 0, 0.128205135, 0)
+TextLabel.Size = UDim2.new(0, 246, 0, 58)
+TextLabel.Font = Enum.Font.Unknown
+TextLabel.Text = "Welcome to [Calamari-R], Created by 1by9 and Epik! enjoyyyyy"
+TextLabel.TextColor3 = Color3.fromRGB(177, 25, 1)
+TextLabel.TextSize = 26.000
+TextLabel.TextWrapped = true
+TextLabel.TextXAlignment = Enum.TextXAlignment.Left
+TextLabel.TextYAlignment = Enum.TextYAlignment.Top
+
+ImageLabel.Parent = Frame
+ImageLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+ImageLabel.BackgroundTransparency = 1.000
+ImageLabel.BorderColor3 = Color3.fromRGB(0, 0, 0)
+ImageLabel.BorderSizePixel = 0
+ImageLabel.Position = UDim2.new(-0.332089543, 0, 0.0641025677, 0)
+ImageLabel.Size = UDim2.new(0, 71, 0, 68)
+ImageLabel.Image = "http://www.roblox.com/asset/?id=70715322781433"
