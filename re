@@ -1,1 +1,1 @@
-game.Players.ServerEvents.Respawn:FireServer()
+ServerEvents.Respawn:FireServer()
