@@ -6,7 +6,9 @@
 local ScreenGui = Instance.new("ScreenGui")
 local Frame = Instance.new("Frame")
 local TextLabel = Instance.new("TextLabel")
+local frame2 = Instance.new("Frame")
 local ImageLabel = Instance.new("ImageLabel")
+local Calamari = Instance.new("ImageButton")
 
 --Properties:
 
@@ -15,29 +17,125 @@ ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 
 Frame.Parent = ScreenGui
 Frame.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-Frame.BorderColor3 = Color3.fromRGB(0, 0, 0)
-Frame.Position = UDim2.new(0.0578280799, 0, 0.864215016, 0)
-Frame.Size = UDim2.new(0, 268, 0, 78)
+Frame.BorderColor3 = Color3.fromRGB(170, 0, 0)
+Frame.Position = UDim2.new(0.0810810775, 0, 0.853482127, 0)
+Frame.Size = UDim2.new(0, 262, 0, 100)
 
 TextLabel.Parent = Frame
 TextLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 TextLabel.BorderColor3 = Color3.fromRGB(0, 0, 0)
 TextLabel.BorderSizePixel = 0
-TextLabel.Position = UDim2.new(0.0410447754, 0, 0.128205135, 0)
-TextLabel.Size = UDim2.new(0, 246, 0, 58)
-TextLabel.Font = Enum.Font.Unknown
-TextLabel.Text = "Welcome to [Calamari-R], Created by 1by9 and Epik! enjoyyyyy"
-TextLabel.TextColor3 = Color3.fromRGB(177, 25, 1)
-TextLabel.TextSize = 14.000
+TextLabel.Position = UDim2.new(0.0305343512, 0, 0.119999997, 0)
+TextLabel.Size = UDim2.new(0, 246, 0, 76)
+TextLabel.Font = Enum.Font.SourceSans
+TextLabel.Text = "Welcome to [Calamari-R]! created by 1by9 and epik, use the executor for commands."
+TextLabel.TextColor3 = Color3.fromRGB(0, 0, 0)
+TextLabel.TextSize = 21.000
 TextLabel.TextWrapped = true
 TextLabel.TextXAlignment = Enum.TextXAlignment.Left
 TextLabel.TextYAlignment = Enum.TextYAlignment.Top
 
-ImageLabel.Parent = Frame
+frame2.Name = "frame2"
+frame2.Parent = ScreenGui
+frame2.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+frame2.BackgroundTransparency = 1.000
+frame2.BorderColor3 = Color3.fromRGB(0, 0, 0)
+frame2.BorderSizePixel = 0
+frame2.Position = UDim2.new(0.0132132135, 0, 0.85330075, 0)
+frame2.Size = UDim2.new(0, 100, 0, 100)
+
+ImageLabel.Parent = frame2
 ImageLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 ImageLabel.BackgroundTransparency = 1.000
 ImageLabel.BorderColor3 = Color3.fromRGB(0, 0, 0)
 ImageLabel.BorderSizePixel = 0
-ImageLabel.Position = UDim2.new(-0.332089543, 0, 0.0641025677, 0)
-ImageLabel.Size = UDim2.new(0, 71, 0, 68)
-ImageLabel.Image = "http://www.roblox.com/asset/?id=70715322781433"
+ImageLabel.Position = UDim2.new(-3.81469718e-08, 0, 0, 0)
+ImageLabel.Size = UDim2.new(0, 99, 0, 100)
+ImageLabel.Image = "http://www.roblox.com/asset/?id=26356434"
+
+Calamari.Name = "Calamari"
+Calamari.Parent = frame2
+Calamari.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Calamari.BackgroundTransparency = 1.000
+Calamari.BorderColor3 = Color3.fromRGB(0, 0, 0)
+Calamari.BorderSizePixel = 0
+Calamari.Position = UDim2.new(-0.0198473353, 0, 0, 0)
+Calamari.Size = UDim2.new(0, 93, 0, 100)
+Calamari.Image = "http://www.roblox.com/asset/?id=97989822066085"
+
+-- Scripts:
+
+local function YXCBQRJ_fake_script() -- TextLabel.LocalScript 
+	local script = Instance.new('LocalScript', TextLabel)
+
+	local textLabel = script.Parent 
+	textLabel.RichText = true
+	
+	local originalText = "Welcome to [Calamari-R]! created by 1by9 and epik, use the executor for commands."
+	
+	-- A function to apply a color to the word
+	local function applyColorToWord(word, color)
+		return `<font color="rgb({color.R*255},{color.G*255},{color.B*255})">{word}</font>`
+	end
+	
+	-- List of RGB colors to cycle through
+	local colors = {
+		Color3.new(1, 0, 0), -- Red
+		Color3.new(0, 1, 0), -- Green
+		Color3.new(0, 0, 1), -- Blue
+	}
+	
+	-- Animate the label
+	local currentIndex = 1
+	while true do
+		local color = colors[currentIndex]
+		local coloredWord = applyColorToWord("[Calamari-R]", color)
+		local newText = originalText:gsub("%[Calamari%-R%]", coloredWord)
+		textLabel.Text = newText
+	
+		currentIndex = currentIndex + 1
+		if currentIndex > #colors then
+			currentIndex = 1
+		end
+		wait(0.5)
+	end
+end
+coroutine.wrap(YXCBQRJ_fake_script)()
+local function HFXYE_fake_script() -- ImageLabel.LocalScript 
+	local script = Instance.new('LocalScript', ImageLabel)
+
+	local TweenService = game:GetService("TweenService")
+	local imageLabel = script.Parent
+	
+	-- Set the anchor point to the center (if it's not already)
+	imageLabel.AnchorPoint = Vector2.new(0.5, 0.5)
+	imageLabel.Position = UDim2.new(0.5, 0, 0.5, 0) -- optional: center it
+	imageLabel.Rotation = 0
+	
+	-- Tween info: time and easing style
+	local tweenInfo = TweenInfo.new(
+		5, -- time in seconds for one full rotation
+		Enum.EasingStyle.Linear,
+		Enum.EasingDirection.InOut,
+		-1, -- repeat forever
+		false -- reverses each time for smooth loop
+	)
+	
+	-- Goal: rotate to 360
+	local tween = TweenService:Create(imageLabel, tweenInfo, {Rotation = 360})
+	tween:Play()
+end
+coroutine.wrap(HFXYE_fake_script)()
+local function XBKYTT_fake_script() -- Calamari.LocalScript 
+	local script = Instance.new('LocalScript', Calamari)
+
+	local cali = script.Parent
+	local text = script.Parent.Parent.Parent.Frame
+	local isVisible = true
+	
+	cali.MouseButton1Click:Connect(function()
+		isVisible = not isVisible
+		text.Visible = isVisible
+	end)
+end
+coroutine.wrap(XBKYTT_fake_script)()
