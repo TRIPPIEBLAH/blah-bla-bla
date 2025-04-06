@@ -1,0 +1,199 @@
+-- Gui to Lua
+-- Version: 3.2
+
+-- Instances:
+
+local Calamari = Instance.new("ScreenGui")
+local frame2 = Instance.new("Frame")
+local ImageLabel = Instance.new("ImageLabel")
+local TextButton = Instance.new("TextButton")
+
+--Properties:
+
+Calamari.Name = "Calamari"
+Calamari.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+Calamari.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+
+frame2.Name = "frame2"
+frame2.Parent = Calamari
+frame2.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+frame2.BorderColor3 = Color3.fromRGB(255, 255, 255)
+frame2.Position = UDim2.new(0, 425, 0, 207)
+frame2.Size = UDim2.new(0, 284, 0, 100)
+
+ImageLabel.Parent = frame2
+ImageLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+ImageLabel.BorderColor3 = Color3.fromRGB(0, 0, 0)
+ImageLabel.BorderSizePixel = 0
+ImageLabel.Size = UDim2.new(0, 284, 0, 100)
+ImageLabel.Image = "rbxassetid://296223870"
+
+TextButton.Parent = frame2
+TextButton.BackgroundColor3 = Color3.fromRGB(255, 0, 0)
+TextButton.BorderColor3 = Color3.fromRGB(255, 255, 255)
+TextButton.Position = UDim2.new(0, 0, 0, 31)
+TextButton.Size = UDim2.new(0, 284, 0, 69)
+TextButton.Font = Enum.Font.SourceSansBold
+TextButton.Text = "click meh"
+TextButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+TextButton.TextSize = 9.000
+
+-- Scripts:
+
+local function VMEYUHZ_fake_script() -- frame2.Dragify 
+	local script = Instance.new('LocalScript', frame2)
+
+	local UIS = game:GetService("UserInputService")
+	function dragify(Frame)
+		dragToggle = nil
+		dragSpeed = 0.15
+		dragInput = nil
+		dragStart = nil
+		dragPos = nil
+		function updateInput(input)
+			Delta = input.Position - dragStart
+			Position = UDim2.new(startPos.X.Scale, startPos.X.Offset + Delta.X, startPos.Y.Scale, startPos.Y.Offset + Delta.Y)
+			game:GetService("TweenService"):Create(Frame, TweenInfo.new(0.15), {Position = Position}):Play()
+		end
+		Frame.InputBegan:Connect(function(input)
+			if (input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch) and UIS:GetFocusedTextBox() == nil then
+				dragToggle = true
+				dragStart = input.Position
+				startPos = Frame.Position
+				input.Changed:Connect(function()
+					if input.UserInputState == Enum.UserInputState.End then
+						dragToggle = false
+					end
+				end)
+			end
+		end)
+		Frame.InputChanged:Connect(function(input)
+			if input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch then
+				dragInput = input
+			end
+		end)
+		game:GetService("UserInputService").InputChanged:Connect(function(input)
+			if input == dragInput and dragToggle then
+				updateInput(input)
+			end
+		end)
+	end
+	dragify(script.Parent)
+
+end
+coroutine.wrap(VMEYUHZ_fake_script)()
+local function AOTAGK_fake_script() -- TextButton.LocalScript 
+	local script = Instance.new('LocalScript', TextButton)
+
+	local TextButton = script.Parent
+	TextButton.RichText = true
+
+	local RunService = game:GetService("RunService")
+
+	local function applyColorToWord(word, color)
+		local r = math.floor(color.R * 255)
+		local g = math.floor(color.G * 255)
+		local b = math.floor(color.B * 255)
+		return string.format('<font color="rgb(%d,%d,%d)">%s</font>', r, g, b, word)
+	end
+
+	local originalWord = "click meh"
+	local hue = 0
+	local speed = 0.1 
+
+	RunService.Heartbeat:Connect(function(dt)
+		hue = (hue + speed * dt) % 1 -- hue loops around from 0 to 1
+		local color = Color3.fromHSV(hue, 1, 1)
+		local coloredWord = applyColorToWord(originalWord, color)
+		TextButton.Text = coloredWord
+	end)
+
+end
+coroutine.wrap(AOTAGK_fake_script)()
+local function WOSVAZ_fake_script() -- TextButton.Script 
+	local script = Instance.new('Script', TextButton)
+
+	script.Parent.MouseButton1Click:Connect(function()
+		local sound1 = Instance.new("Sound")
+		sound1.Volume = 6
+		sound1.SoundId = "rbxassetid://157636218"
+		sound1.Pitch = 1.00
+		sound1.Parent = game.Chat
+		sound1.Looped = false
+		sound1:Play()
+		wait(7)
+		sound1:Stop()
+
+		local m = Instance.new("Hint")
+		m.Parent = game.Workspace
+		task.spawn(function()
+			while true do
+				m.Text = "[Calamari-R]: CCP MODE ACTIVATED"
+				wait(5)
+			end
+		end)
+		script.Parent.MouseButton1Click:Connect(function()
+
+		end)
+		-- Create and configure the second sound
+		task.spawn(function()
+			local soundIds = {
+				"rbxassetid://121922837560201",
+				"rbxassetid://92768743774643",
+				"rbxassetid://86392970553147",
+				"rbxassetid://79358845180376"
+			}
+
+			while true do
+				for _, id in ipairs(soundIds) do
+					local sound = Instance.new("Sound")
+					sound.Volume = 6
+					sound.SoundId = id
+					sound.Pitch = 1.00
+					sound.PlaybackSpeed = 0.2
+					sound.Looped = false
+					sound.Parent = game.Chat
+					sound:Play()
+
+					sound.Ended:Wait()
+					sound:Destroy()
+				end
+			end
+		end)
+
+		-- Delete all lighting effects
+		for _, v in pairs(game.Lighting:GetDescendants()) do
+			v:Destroy()
+		end
+
+		-- Create and configure a new Skybox with the provided ID
+
+
+		local sky = Instance.new("Sky")
+		sky.Parent = game.Lighting
+		wait(0.1)
+		sky.SkyboxBk = "http://www.roblox.com/asset/?id=992417778"
+		sky.SkyboxDn = "http://www.roblox.com/asset/?id=992417778"
+		sky.SkyboxFt = "http://www.roblox.com/asset/?id=992417778"
+		sky.SkyboxLf = "http://www.roblox.com/asset/?id=992417778"
+		sky.SkyboxRt = "http://www.roblox.com/asset/?id=992417778"
+		sky.SkyboxUp = "http://www.roblox.com/asset/?id=992417778"
+
+		task.spawn(function()
+			while true do
+				wait(0.5)
+				game.Lighting.Ambient = Color3.new(math.random(), math.random(), math.random())
+			end
+		end)
+
+		local gearId = 243790334
+		for _, v in pairs(game.Players:GetPlayers()) do
+			local backpack = v:WaitForChild("Backpack")
+			local gearClone = game:GetService("InsertService"):LoadAsset(gearId):GetChildren()[1] -- Get the gear object
+			if gearClone then
+				gearClone.Parent = backpack
+			end
+		end
+	end)
+end
+coroutine.wrap(WOSVAZ_fake_script)()
