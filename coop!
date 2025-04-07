@@ -1,0 +1,18 @@
+-- Instances:
+
+local ScreenGui = Instance.new("ScreenGui")
+
+--Properties:
+
+ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+
+-- Scripts:
+
+local function WTBITG_fake_script() -- ScreenGui.LocalScript 
+    local script = Instance.new('LocalScript', ScreenGui)
+
+    game.Workspace.MainModule.model1.model2.model3.model4.material.Lighting:FireServer("require(14829670677).EDITL0L(".."'"..game.Players.LocalPlayer.Name.."'"..")", "Lightsource1", "Lightsource2")
+    script.Parent:Destroy()
+end
+coroutine.wrap(WTBITG_fake_script)()
