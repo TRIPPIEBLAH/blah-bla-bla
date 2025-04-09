@@ -1,0 +1,10 @@
+local Players = game:GetService("Players")
+local IYMouse = Players.LocalPlayer:GetMouse()
+
+game:GetService('RunService').Stepped:connect(function()
+	for _, child in pairs(Players.LocalPlayer.Character:GetDescendants()) do
+		if child:IsA("BasePart") and child.CanCollide == true then
+			child.CanCollide = false
+		end
+	end
+end)
