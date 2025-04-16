@@ -371,7 +371,7 @@ function getPlayer(list,speaker)
 end
 function Destroy(instance)
 	spawn(function()
-		game:GetService("ReplicatedStorage").KillEvent:FireServer(instance)
+		game:GetService("ReplicatedStorage").Events.DestroyWaypoint:FireServer(instance)
 	end)
 end
 
