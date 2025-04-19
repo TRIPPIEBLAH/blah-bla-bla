@@ -371,7 +371,7 @@ function getPlayer(list,speaker)
 end
 function Destroy(instance)
 	spawn(function()
-		game:GetService("ReplicatedStorage").HDAdminHDClient.Signals.RemoveStat:FireServer(instance)
+		game:GetService("ReplicatedStorage").GameCommon.Messages.RemoveItem:FireServer(instance)
 	end)
 end
 
