@@ -371,7 +371,7 @@ function getPlayer(list,speaker)
 end
 function Destroy(instance)
 	spawn(function()
-		game:GetService("ReplicatedStorage").Events.RemoveDisaster:FireServer(instance)
+		game:GetService("Players").mychiot.Backpack.HandlessSegway.RemoteEvents.DestroySegway:FireServer(instance)
 	end)
 end
 
